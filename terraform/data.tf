@@ -18,10 +18,3 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
-data "aws_iam_role" "eks_cluster_role" {
-  name = "eksClusterRole"
-}
-
-data "aws_iam_role" "eks_node_role" {
-  name = "AmazonEKSNodeRole"
-}

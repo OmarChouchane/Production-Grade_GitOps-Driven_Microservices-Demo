@@ -29,8 +29,15 @@ module "eks" {
   name               = "terraform-cluster"
   kubernetes_version = "1.34"
 
-  create_iam_role = false
-  iam_role_arn     = data.aws_iam_role.eks_cluster_role.arn
+  create_iam_role          = true
+  iam_role_name            = "eksClusterRole"
+  iam_role_use_name_prefix = false
+
+  # KodeKloud does not grant Terraform permission to manage these optional resources.
+  create_cloudwatch_log_group = false
+  encryption_config           = null
+  create_kms_key              = false
+  attach_encryption_policy    = false
 
 
   addons = {
@@ -47,8 +54,8 @@ module "eks" {
   # Optional
   endpoint_public_access = false
 
-  # Optional: Adds the current caller identity as an administrator via cluster access entry
-  enable_cluster_creator_admin_permissions = true
+  # KodeKloud does not grant the caller eks:AssociateAccessPolicy.
+  enable_cluster_creator_admin_permissions = false
 
 
   vpc_id                        = module.vpc.vpc_id
@@ -57,8 +64,9 @@ module "eks" {
 
   eks_managed_node_groups = {
     example = {
-      create_iam_role = false
-      iam_role_arn    = data.aws_iam_role.eks_node_role.arn
+      create_iam_role          = true
+      iam_role_name            = "AmazonEKSNodeRole"
+      iam_role_use_name_prefix = false
       # Starting on 1.30, AL2023 is the default AMI type for EKS managed node groups
       ami_type       = "AL2023_x86_64_STANDARD"
       instance_types = ["t3.medium"]
