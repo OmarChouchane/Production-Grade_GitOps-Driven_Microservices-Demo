@@ -28,13 +28,13 @@ images:
     repository: ghcr.io/omarchouchane/microservices-demo/checkoutservice
     tag: v0.10.4
   currencyservice:
-    repository: ghcr.io/laxmikantagiri/microservices-demo/currencyservice
+    repository: ghcr.io/omarchouchane/microservices-demo/currencyservice
     tag: v0.10.4
   emailservice:
-    repository: ghcr.io/laxmikantagiri/microservices-demo/emailservice
+    repository: ghcr.io/omarchouchane/microservices-demo/emailservice
     tag: v0.10.4
   frontend:
-    repository: ghcr.io/laxmikantagiri/microservices-demo/frontend
+    repository: ghcr.io/omarchouchane/microservices-demo/frontend
     tag: v0.10.4
   loadgenerator:
     repository: ghcr.io/laxmikantagiri/microservices-demo/loadgenerator
