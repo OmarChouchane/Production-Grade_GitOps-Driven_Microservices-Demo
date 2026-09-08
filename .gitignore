@@ -2,9 +2,7 @@
 .eclipse.buildship.core.prefs
 .gradle/
 .idea/
-.kubernetes-manifests-*/
 .project
-.skaffold-*.yaml
 .terraform.lock.hcl
 .terraform/*
 .venv/
@@ -24,7 +22,6 @@ Dockerfile.pip
 node_modules/
 obj/
 pkg/
-release/wi-kubernetes-manifests.yaml
 vendor/
 *.pem
 .terraform
