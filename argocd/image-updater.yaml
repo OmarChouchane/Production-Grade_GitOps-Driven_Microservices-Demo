@@ -26,13 +26,13 @@ spec:
           imageName: ghcr.io/omarchouchane/microservices-demo/currencyservice
 
         - alias: emailservice
-          imageName: ghcr.io/laxmikantagiri/microservices-demo/emailservice
+          imageName: ghcr.io/omarchouchane/microservices-demo/emailservice
 
         - alias: frontend
-          imageName: ghcr.io/laxmikantagiri/microservices-demo/frontend
+          imageName: ghcr.io/omarchouchane/microservices-demo/frontend
 
         - alias: paymentservice
-          imageName: ghcr.io/laxmikantagiri/microservices-demo/paymentservice
+          imageName: ghcr.io/omarchouchane/microservices-demo/paymentservice
 
         - alias: productcatalogservice
           imageName: ghcr.io/laxmikantagiri/microservices-demo/productcatalogservice
