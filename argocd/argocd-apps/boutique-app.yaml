@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/laxmikantagiri/Production-Grade_GitOps-Driven_Microservices-Demo.git
+    repoURL: https://github.com/OmarChouchane/eks-gitops-microservices-platform.git
     targetRevision: HEAD
     path: .
 
