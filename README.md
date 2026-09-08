@@ -1,4 +1,4 @@
-# Production-Grade GitOps-Driven Microservices Demo
+# EKS GitOps Microservices Platform
 
 Online Boutique (11-service polyglot e-commerce app, gRPC internally) deployed to **Amazon EKS** through a GitOps pipeline: Terraform for infra, GitHub Actions for CI, Argo CD + Argo CD Image Updater for CD, AWS Gateway API/ALB for ingress, kube-prometheus-stack for metrics/alerting, and ECK for centralized logging.
 
