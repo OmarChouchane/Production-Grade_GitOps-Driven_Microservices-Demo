@@ -18,14 +18,14 @@
 
 images:
   adservice:
-    repository: ghcr.io/laxmikantagiri/microservices-demo/adservice
+    repository: ghcr.io/omarchouchane/microservices-demo/adservice
     # Overrides the image tag whose default is the chart appVersion.
     tag: v0.10.4
   cartservice:
-    repository: ghcr.io/laxmikantagiri/microservices-demo/cartservice
+    repository: ghcr.io/omarchouchane/microservices-demo/cartservice
     tag: v0.10.4
   checkoutservice:
-    repository: ghcr.io/laxmikantagiri/microservices-demo/checkoutservice
+    repository: ghcr.io/omarchouchane/microservices-demo/checkoutservice
     tag: v0.10.4
   currencyservice:
     repository: ghcr.io/laxmikantagiri/microservices-demo/currencyservice
