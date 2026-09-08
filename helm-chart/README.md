@@ -7,7 +7,7 @@ retargeted at AWS (GHCR images, Redis-only cart storage, no Spanner/GKE-specific
 
 Install directly (no Argo CD):
 ```sh
-helm install onlineboutique oci://ghcr.io/laxmikantagiri/onlineboutique \
+helm install onlineboutique oci://ghcr.io/omarchouchane/onlineboutique \
     --version 0.10.4 \
     --create-namespace \
     -n boutique-app
