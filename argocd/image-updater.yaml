@@ -35,14 +35,14 @@ spec:
           imageName: ghcr.io/omarchouchane/microservices-demo/paymentservice
 
         - alias: productcatalogservice
-          imageName: ghcr.io/laxmikantagiri/microservices-demo/productcatalogservice
+          imageName: ghcr.io/omarchouchane/microservices-demo/productcatalogservice
 
         - alias: recommendationservice
-          imageName: ghcr.io/laxmikantagiri/microservices-demo/recommendationservice
+          imageName: ghcr.io/omarchouchane/microservices-demo/recommendationservice
 
         - alias: shippingservice
-          imageName: ghcr.io/laxmikantagiri/microservices-demo/shippingservice
+          imageName: ghcr.io/omarchouchane/microservices-demo/shippingservice
 
         - alias: loadgenerator
-          imageName: ghcr.io/laxmikantagiri/microservices-demo/loadgenerator
+          imageName: ghcr.io/omarchouchane/microservices-demo/loadgenerator
 
