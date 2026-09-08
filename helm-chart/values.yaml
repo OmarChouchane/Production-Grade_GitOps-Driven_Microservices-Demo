@@ -228,6 +228,13 @@ shippingService:
       cpu: 200m
       memory: 128Mi
 
+# https://github.com/GoogleCloudPlatform/microservices-demo/tree/main/kustomize/components/shopping-assistant
+# Not deployed in this fork (src/shoppingassistantservice removed) — kept as `create: false`
+# because frontend's Deployment template reads this key unconditionally to set its env vars.
+shoppingAssistantService:
+  create: false
+  name: shoppingassistantservice
+
 cartDatabase:
   # Specifies the type of the cartservice's database, could be either redis or spanner.
   type: redis
@@ -245,7 +252,3 @@ cartDatabase:
     certificate: ""
 
 # @TODO: This service is not currently available in Helm.
-# https://github.com/GoogleCloudPlatform/microservices-demo/tree/main/kustomize/components/shopping-assistant
-shoppingAssistantService:
-  create: false
-  name: shoppingassistantservice
