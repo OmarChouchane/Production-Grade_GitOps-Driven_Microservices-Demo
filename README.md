@@ -2,23 +2,24 @@
 
 Online Boutique (11-service polyglot e-commerce app, gRPC internally) deployed to **Amazon EKS** through a GitOps pipeline: Terraform for infra, GitHub Actions for CI, Argo CD + Argo CD Image Updater for CD, AWS Gateway API/ALB for ingress, kube-prometheus-stack for metrics/alerting, and ECK for centralized logging.
 
-| Layer | Tooling |
-|---|---|
-| IaC | Terraform, `terraform-aws-modules/eks` v21, `terraform-aws-modules/vpc` |
-| Runtime | Amazon EKS 1.34, `t3.medium` managed node group |
-| Ingress | Gateway API v1.3.0, AWS Load Balancer Controller v3.0.0 (ALB) |
-| DNS | ExternalDNS 1.20.0, Route53, EKS Pod Identity |
-| Packaging | Helm (OCI chart in GHCR), Kustomize (glue manifests only) |
-| CI | GitHub Actions, Docker Buildx (GHA cache), Trivy, GHCR |
-| CD | Argo CD 9.4.0, Argo CD Image Updater 1.0.5 |
-| Metrics/Alerts | kube-prometheus-stack 81.6.3, Alertmanager → Slack |
-| Logging | ECK operator 3.3.0 (Elasticsearch, Filebeat, Kibana), AWS EBS CSI driver |
-| Autoscaling | metrics-server 3.13.0, HPA (`autoscaling/v2`) |
+| Layer          | Tooling                                                                  |
+| -------------- | ------------------------------------------------------------------------ |
+| IaC            | Terraform, `terraform-aws-modules/eks` v21, `terraform-aws-modules/vpc`  |
+| Runtime        | Amazon EKS 1.34, `t3.medium` managed node group                          |
+| Ingress        | Gateway API v1.3.0, AWS Load Balancer Controller v3.0.0 (ALB)            |
+| DNS            | ExternalDNS 1.20.0, Route53, EKS Pod Identity                            |
+| Packaging      | Helm (OCI chart in GHCR), Kustomize (glue manifests only)                |
+| CI             | GitHub Actions, Docker Buildx (GHA cache), Trivy, GHCR                   |
+| CD             | Argo CD 9.4.0, Argo CD Image Updater 1.0.5                               |
+| Metrics/Alerts | kube-prometheus-stack 81.6.3, Alertmanager → Slack                       |
+| Logging        | ECK operator 3.3.0 (Elasticsearch, Filebeat, Kibana), AWS EBS CSI driver |
+| Autoscaling    | metrics-server 3.13.0, HPA (`autoscaling/v2`)                            |
 
 ## Architecture
 
 <!-- TODO: replace with your own diagram, e.g. docs/images/architecture.png -->
-![Architecture Diagram](docs/images/architecture.png)
+
+![Architecture Diagram](docs/images/architecture-diagram.gif)
 
 ```
 Internet
@@ -54,19 +55,19 @@ git push (src/**) → GitHub Actions (matrix build, per changed service)
 
 11 services, gRPC internally (`protos/demo.proto`), one Helm chart. Only `cartservice` persists state.
 
-| Service | Language | Notes |
-|---|---|---|
-| `frontend` | Go | HTTP entrypoint, generates session cookies |
-| `cartservice` | C# | Redis-backed cart |
-| `productcatalogservice` | Go | Static JSON product catalog, in-memory |
-| `currencyservice` | Node.js | Highest-QPS service, static FX rates |
-| `paymentservice` | Node.js | Mock charge, returns a transaction ID |
-| `shippingservice` | Go | Mock shipping quote |
-| `emailservice` | Python | Mock order-confirmation email |
-| `checkoutservice` | Go | Orchestrates cart → payment → shipping → email |
-| `recommendationservice` | Python | Recommends products from cart contents |
-| `adservice` | Java | Context-keyed text ads, in-memory |
-| `loadgenerator` | Python/Locust | Synthetic traffic against `frontend` |
+| Service                 | Language      | Notes                                          |
+| ----------------------- | ------------- | ---------------------------------------------- |
+| `frontend`              | Go            | HTTP entrypoint, generates session cookies     |
+| `cartservice`           | C#            | Redis-backed cart                              |
+| `productcatalogservice` | Go            | Static JSON product catalog, in-memory         |
+| `currencyservice`       | Node.js       | Highest-QPS service, static FX rates           |
+| `paymentservice`        | Node.js       | Mock charge, returns a transaction ID          |
+| `shippingservice`       | Go            | Mock shipping quote                            |
+| `emailservice`          | Python        | Mock order-confirmation email                  |
+| `checkoutservice`       | Go            | Orchestrates cart → payment → shipping → email |
+| `recommendationservice` | Python        | Recommends products from cart contents         |
+| `adservice`             | Java          | Context-keyed text ads, in-memory              |
+| `loadgenerator`         | Python/Locust | Synthetic traffic against `frontend`           |
 
 ## Repository layout
 
